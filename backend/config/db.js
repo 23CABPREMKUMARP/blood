@@ -10,8 +10,8 @@ const connectDB = async () => {
     try {
         await sequelize.authenticate();
         console.log('SQLite Database Connected.');
-        await sequelize.sync({ force: false }); // creates tables
-        console.log('Database synced.');
+        await sequelize.sync({ alter: true }); // updates tables without losing data
+        console.log('Database synced with alter: true.');
     } catch (error) {
         console.error('Unable to connect to database:', error);
     }

@@ -23,8 +23,13 @@ const RegisterDonor = () => {
             alert('Welcome Hero! Registration successful.');
             navigate('/search');
         } catch (error) {
-            console.error('Registration Error:', error);
-            alert(error.response?.data?.message || 'Error registering donor. Please try again.');
+            console.error('Registration Error Details:', {
+                status: error.response?.status,
+                data: error.response?.data,
+                message: error.message
+            });
+            const errorMsg = error.response?.data?.message || 'Error connecting to server. Please ensure the backend is running.';
+            alert(errorMsg);
         }
     };
 

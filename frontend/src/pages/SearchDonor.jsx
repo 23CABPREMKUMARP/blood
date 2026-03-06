@@ -67,7 +67,7 @@ const SearchDonor = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {donors.length > 0 ? donors.map((donor, idx) => (
                     <motion.div
-                        key={donor._id} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.1 }}
+                        key={donor.id || idx} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.1 }}
                         className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition"
                     >
                         <div className="flex justify-between items-start mb-4">
