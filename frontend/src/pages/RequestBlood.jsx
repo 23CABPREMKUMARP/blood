@@ -4,6 +4,8 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { AlertTriangle } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const RequestBlood = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -33,7 +35,7 @@ const RequestBlood = () => {
         }
 
         try {
-            await axios.post('http://localhost:5000/api/requests', formData, {
+            await axios.post(`${API_URL}/requests`, formData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             alert('Blood Request Posted Successfully!');

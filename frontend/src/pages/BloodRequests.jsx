@@ -3,13 +3,15 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { AlertCircle, MapPin, Phone } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const BloodRequests = () => {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/requests');
+                const res = await axios.get(`${API_URL}/requests`);
                 setRequests(res.data);
             } catch (error) {
                 console.error(error);

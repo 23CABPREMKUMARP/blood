@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Search, MapPin, Phone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Assuming this is needed for RequestBlood
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const SearchDonor = () => {
     const [donors, setDonors] = useState([]);
@@ -13,7 +16,7 @@ const SearchDonor = () => {
 
     const fetchDonors = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/donors', { params: filters });
+            const res = await axios.get(`${API_URL}/donors`, { params: filters });
             setDonors(res.data);
         } catch (error) {
             console.error(error);

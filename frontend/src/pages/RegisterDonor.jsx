@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 const RegisterDonor = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -18,7 +20,7 @@ const RegisterDonor = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+            const res = await axios.post(`${API_URL}/auth/register`, formData);
             localStorage.setItem('token', res.data.token);
             alert('Welcome Hero! Registration successful.');
             navigate('/search');
